@@ -1,0 +1,191 @@
+
+          @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+          .sr-root{min-height:100vh;background:#0a0c10;font-family:'Rajdhani',sans-serif;color:#e2e8f0;}
+          .sr-center{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 64px);padding:24px;}
+          .sr-success{max-width:420px;width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(99,102,241,0.25);border-radius:20px;padding:48px 36px;text-align:center;}
+          .sr-s-icon{font-size:56px;margin-bottom:16px;}
+          .sr-s-title{font-size:28px;font-weight:700;color:#818cf8;margin-bottom:10px;}
+          .sr-s-sub{font-size:14px;color:#475569;line-height:1.7;margin-bottom:28px;}
+          .sr-s-btn{background:linear-gradient(135deg,#4f46e5,#6366f1);color:white;border:none;border-radius:10px;padding:13px 32px;font-size:15px;font-weight:700;font-family:'Rajdhani',sans-serif;letter-spacing:1.5px;cursor:pointer;}
+        .sr-root {
+          min-height: 100vh;
+          background: #0a0c10;
+          background-image: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(99,102,241,0.06) 0%, transparent 60%);
+          font-family: 'Rajdhani', sans-serif;
+          color: #e2e8f0;
+          padding-bottom: 60px;
+        }
+
+        .sr-center {
+          display: flex;
+          justify-content: center;
+          padding: 36px 20px;
+        }
+
+        .sr-card {
+          width: 100%;
+          max-width: 560px;
+          background: rgba(255,255,255,0.025);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 22px;
+          overflow: hidden;
+        }
+
+        .sr-header {
+          background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(99,102,241,0.04));
+          border-bottom: 1px solid rgba(99,102,241,0.15);
+          padding: 28px 34px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .sr-icon {
+          width: 48px; height: 48px;
+          background: rgba(99,102,241,0.18);
+          border-radius: 13px;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 22px;
+          flex-shrink: 0;
+        }
+
+        .sr-eyebrow {
+          font-size: 11px;
+          font-family: 'Share Tech Mono', monospace;
+          color: #6366f1;
+          letter-spacing: 3px;
+          margin-bottom: 4px;
+        }
+
+        .sr-title {
+          font-size: 26px;
+          font-weight: 700;
+          color: #f1f5f9;
+          line-height: 1;
+        }
+
+        .sr-body {
+          padding: 28px 34px;
+        }
+
+        .sr-label {
+          font-size: 11px;
+          font-family: 'Share Tech Mono', monospace;
+          color: #64748b;
+          letter-spacing: 2px;
+          margin-bottom: 7px;
+          display: block;
+        }
+
+        .sr-input, .sr-select, .sr-textarea {
+          width: 100%;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.09);
+          border-radius: 10px;
+          padding: 13px 14px;
+          font-size: 15px;
+          font-family: 'Rajdhani', sans-serif;
+          color: #e2e8f0;
+          outline: none;
+          box-sizing: border-box;
+          margin-bottom: 18px;
+          transition: border-color 0.2s;
+          appearance: none;
+        }
+
+        .sr-input::placeholder, .sr-textarea::placeholder { color: #334155; }
+        .sr-input:focus, .sr-select:focus, .sr-textarea:focus { border-color: rgba(99,102,241,0.4); }
+        .sr-select option { background: #1e293b; }
+
+        .sr-textarea {
+          min-height: 100px;
+          resize: vertical;
+        }
+
+        .two-col {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 14px;
+        }
+
+        /* Support type chips */
+        .support-chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-bottom: 18px;
+        }
+
+        .support-chip {
+          font-size: 13px;
+          font-family: 'Share Tech Mono', monospace;
+          padding: 7px 16px;
+          border-radius: 100px;
+          border: 1px solid rgba(255,255,255,0.1);
+          background: rgba(255,255,255,0.04);
+          color: #64748b;
+          cursor: pointer;
+          letter-spacing: 1px;
+          transition: all 0.2s;
+        }
+
+        .support-chip.sel-rescue { background: rgba(239,68,68,0.15); color: #f87171; border-color: rgba(239,68,68,0.3); }
+        .support-chip.sel-food { background: rgba(245,158,11,0.15); color: #fbbf24; border-color: rgba(245,158,11,0.3); }
+        .support-chip.sel-medicine { background: rgba(59,130,246,0.15); color: #60a5fa; border-color: rgba(59,130,246,0.3); }
+        .support-chip.sel-shelter { background: rgba(16,185,129,0.15); color: #34d399; border-color: rgba(16,185,129,0.3); }
+
+        /* File upload */
+        .file-upload {
+          border: 2px dashed rgba(255,255,255,0.1);
+          border-radius: 12px;
+          padding: 24px;
+          text-align: center;
+          cursor: pointer;
+          margin-bottom: 18px;
+          transition: border-color 0.2s, background 0.2s;
+          position: relative;
+        }
+
+        .file-upload:hover {
+          border-color: rgba(99,102,241,0.35);
+          background: rgba(99,102,241,0.04);
+        }
+
+        .file-upload input[type="file"] {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          cursor: pointer;
+          width: 100%;
+          height: 100%;
+        }
+
+        .file-upload-icon { font-size: 28px; margin-bottom: 8px; }
+        .file-upload-label { font-size: 14px; color: #64748b; font-family: 'Share Tech Mono', monospace; letter-spacing: 1px; }
+        .file-name { font-size: 12px; color: #818cf8; margin-top: 6px; font-family: 'Share Tech Mono', monospace; }
+
+        /* Divider */
+        .sr-divider {
+          border: none;
+          border-top: 1px solid rgba(255,255,255,0.06);
+          margin: 4px 0 20px;
+        }
+
+        /* Submit */
+        .sr-submit {
+          width: 100%;
+          background: linear-gradient(135deg, #4f46e5, #6366f1);
+          color: white;
+          border: none;
+          border-radius: 12px;
+          padding: 15px;
+          font-size: 16px;
+          font-weight: 700;
+          font-family: 'Rajdhani', sans-serif;
+          letter-spacing: 2px;
+          cursor: pointer;
+          transition: opacity 0.2s, transform 0.15s;
+        }
+
+        .sr-submit:hover { opacity: 0.87; transform: scale(1.01); }
+      

@@ -1,0 +1,233 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+        .reg-root {
+          min-height: 100vh;
+          background: #0a0c10;
+          background-image: radial-gradient(ellipse 70% 40% at 70% 60%, rgba(16,185,129,0.05) 0%, transparent 60%);
+          font-family: 'Rajdhani', sans-serif;
+          color: #e2e8f0;
+          padding-bottom: 60px;
+        }
+
+        .reg-layout {
+          display: flex;
+          min-height: calc(100vh - 64px);
+          align-items: center;
+          justify-content: center;
+          padding: 36px 20px;
+        }
+
+        .reg-card {
+          width: 100%;
+          max-width: 520px;
+          background: rgba(255,255,255,0.025);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 22px;
+          overflow: hidden;
+        }
+
+        .reg-header {
+          padding: 30px 34px 24px;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+          display: flex;
+          align-items: center;
+          gap: 18px;
+        }
+
+        .reg-icon {
+          width: 50px; height: 50px;
+          background: rgba(16,185,129,0.15);
+          border-radius: 14px;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 24px;
+          flex-shrink: 0;
+        }
+
+        .reg-eyebrow {
+          font-size: 11px;
+          font-family: 'Share Tech Mono', monospace;
+          color: #10b981;
+          letter-spacing: 3px;
+          margin-bottom: 4px;
+        }
+
+        .reg-title {
+          font-size: 28px;
+          font-weight: 700;
+          color: #f1f5f9;
+          line-height: 1;
+        }
+
+        /* Progress */
+        .reg-progress {
+          padding: 20px 34px;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+          display: flex;
+          align-items: center;
+          gap: 0;
+        }
+
+        .prog-step {
+          display: flex;
+          align-items: center;
+          flex: 1;
+          gap: 0;
+        }
+
+        .prog-circle {
+          width: 28px; height: 28px;
+          border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 12px;
+          font-weight: 700;
+          font-family: 'Share Tech Mono', monospace;
+          flex-shrink: 0;
+          transition: all 0.3s;
+        }
+
+        .prog-circle.done { background: #10b981; color: white; }
+        .prog-circle.active { background: rgba(16,185,129,0.2); color: #10b981; border: 2px solid #10b981; }
+        .prog-circle.idle { background: rgba(255,255,255,0.05); color: #475569; border: 1px solid rgba(255,255,255,0.08); }
+
+        .prog-label {
+          font-size: 10px;
+          font-family: 'Share Tech Mono', monospace;
+          color: #64748b;
+          letter-spacing: 1px;
+          margin-left: 8px;
+        }
+
+        .prog-line {
+          flex: 1;
+          height: 2px;
+          background: rgba(255,255,255,0.07);
+          margin: 0 10px;
+        }
+
+        .prog-line.filled { background: #10b981; }
+
+        /* Body */
+        .reg-body {
+          padding: 28px 34px;
+        }
+
+        .reg-label {
+          font-size: 11px;
+          font-family: 'Share Tech Mono', monospace;
+          color: #64748b;
+          letter-spacing: 2px;
+          margin-bottom: 7px;
+          display: block;
+        }
+
+        .reg-input {
+          width: 100%;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.09);
+          border-radius: 10px;
+          padding: 13px 14px;
+          font-size: 15px;
+          font-family: 'Rajdhani', sans-serif;
+          color: #e2e8f0;
+          outline: none;
+          box-sizing: border-box;
+          margin-bottom: 14px;
+          transition: border-color 0.2s;
+        }
+
+        .reg-input::placeholder { color: #334155; }
+        .reg-input:focus { border-color: rgba(16,185,129,0.35); }
+
+        .pass-wrap {
+          position: relative;
+          margin-bottom: 14px;
+        }
+
+        .pass-wrap .reg-input { margin-bottom: 0; padding-right: 44px; }
+
+        .pass-toggle {
+          position: absolute;
+          right: 13px; top: 50%;
+          transform: translateY(-50%);
+          background: none; border: none;
+          color: #475569; cursor: pointer; font-size: 16px;
+        }
+
+        /* Role cards */
+        .role-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+          margin-bottom: 14px;
+        }
+
+        .role-card {
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 12px;
+          padding: 14px;
+          cursor: pointer;
+          transition: all 0.2s;
+          text-align: center;
+        }
+
+        .role-card:hover { border-color: rgba(255,255,255,0.16); }
+
+        .role-card.selected {
+          border-color: rgba(16,185,129,0.4);
+          background: rgba(16,185,129,0.08);
+        }
+
+        .role-emoji { font-size: 24px; margin-bottom: 6px; }
+        .role-name { font-size: 14px; font-weight: 700; color: #e2e8f0; }
+        .role-desc { font-size: 11px; color: #475569; font-family: 'Share Tech Mono', monospace; }
+
+        /* Buttons */
+        .reg-actions {
+          display: flex;
+          gap: 10px;
+          margin-top: 8px;
+        }
+
+        .btn-next {
+          flex: 1;
+          background: linear-gradient(135deg, #059669, #10b981);
+          color: white;
+          border: none;
+          border-radius: 10px;
+          padding: 14px;
+          font-size: 15px;
+          font-weight: 700;
+          font-family: 'Rajdhani', sans-serif;
+          letter-spacing: 1.5px;
+          cursor: pointer;
+          transition: opacity 0.2s;
+        }
+
+        .btn-next:hover { opacity: 0.85; }
+
+        .btn-back {
+          background: rgba(255,255,255,0.05);
+          color: #64748b;
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 10px;
+          padding: 14px 20px;
+          font-size: 14px;
+          font-family: 'Rajdhani', sans-serif;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+
+        .btn-back:hover { background: rgba(255,255,255,0.09); }
+
+        .login-hint {
+          text-align: center;
+          font-size: 13px;
+          color: #475569;
+          margin-top: 18px;
+          font-family: 'Share Tech Mono', monospace;
+        }
+
+        .login-hint a { color: #34d399; text-decoration: none; }
+      

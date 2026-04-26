@@ -1,0 +1,164 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+        .fp-root {
+          min-height: 100vh;
+          background: #0a0c10;
+          background-image: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(99,102,241,0.07) 0%, transparent 60%);
+          font-family: 'Rajdhani', sans-serif;
+          color: #e2e8f0;
+        }
+
+        .fp-center {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: calc(100vh - 64px);
+          padding: 24px;
+        }
+
+        .fp-card {
+          width: 100%;
+          max-width: 420px;
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 20px;
+          padding: 40px 36px;
+        }
+
+        .fp-icon {
+          width: 52px; height: 52px;
+          background: rgba(99,102,241,0.15);
+          border-radius: 14px;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 24px;
+          margin-bottom: 22px;
+        }
+
+        .fp-tag {
+          font-size: 11px;
+          font-family: 'Share Tech Mono', monospace;
+          color: #6366f1;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          margin-bottom: 6px;
+        }
+
+        .fp-heading {
+          font-size: 30px;
+          font-weight: 700;
+          color: #f1f5f9;
+          margin-bottom: 8px;
+        }
+
+        .fp-sub {
+          font-size: 14px;
+          color: #475569;
+          margin-bottom: 28px;
+          line-height: 1.6;
+        }
+
+        .fp-label {
+          font-size: 12px;
+          font-family: 'Share Tech Mono', monospace;
+          color: #64748b;
+          letter-spacing: 2px;
+          margin-bottom: 6px;
+        }
+
+        .fp-input {
+          width: 100%;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 10px;
+          padding: 13px 16px;
+          font-size: 15px;
+          font-family: 'Rajdhani', sans-serif;
+          color: #e2e8f0;
+          outline: none;
+          margin-bottom: 16px;
+          box-sizing: border-box;
+          transition: border-color 0.2s;
+        }
+
+        .fp-input::placeholder { color: #334155; }
+        .fp-input:focus { border-color: rgba(99,102,241,0.45); }
+
+        .fp-btn {
+          width: 100%;
+          background: linear-gradient(135deg, #4f46e5, #6366f1);
+          color: white;
+          border: none;
+          border-radius: 10px;
+          padding: 14px;
+          font-size: 16px;
+          font-weight: 700;
+          font-family: 'Rajdhani', sans-serif;
+          letter-spacing: 1.5px;
+          cursor: pointer;
+          transition: opacity 0.2s;
+          margin-top: 4px;
+        }
+
+        .fp-btn:hover { opacity: 0.85; }
+
+        .fp-btn.green {
+          background: linear-gradient(135deg, #059669, #10b981);
+        }
+
+        /* Steps */
+        .fp-steps {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 28px;
+        }
+
+        .fp-step {
+          height: 3px;
+          border-radius: 3px;
+          flex: 1;
+          background: rgba(255,255,255,0.08);
+        }
+
+        .fp-step.active { background: #6366f1; }
+        .fp-step.done { background: #10b981; }
+
+        /* Success */
+        .fp-success {
+          text-align: center;
+          padding: 20px 0;
+        }
+
+        .fp-success-icon {
+          font-size: 52px;
+          margin-bottom: 16px;
+        }
+
+        .fp-success-title {
+          font-size: 26px;
+          font-weight: 700;
+          color: #4ade80;
+          margin-bottom: 8px;
+        }
+
+        .fp-success-sub {
+          font-size: 14px;
+          color: #475569;
+        }
+
+        .fp-back {
+          width: 100%;
+          margin-top: 16px;
+          background: rgba(255,255,255,0.05);
+          color: #94a3b8;
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 10px;
+          padding: 12px;
+          font-size: 14px;
+          font-family: 'Rajdhani', sans-serif;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+
+        .fp-back:hover { background: rgba(255,255,255,0.09); }
+      
