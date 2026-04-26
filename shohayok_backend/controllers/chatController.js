@@ -1,4 +1,5 @@
 const { Conversation, Message, User } = require("../models");
+const { fn, col, where } = require("sequelize");
 
 const getMyConversations = async (req, res) => {
   try {
@@ -8,32 +9,14 @@ const getMyConversations = async (req, res) => {
     }
 
     const conversations = await Conversation.findAll({
+      where: where(
+        fn("JSON_CONTAINS", col("participants"), JSON.stringify(userId)),
+        1
+      ),
       order: [["updatedAt", "DESC"]]
     });
 
-    const myConversations = conversations.filter((conversation) => {
-      const participants = Array.isArray(conversation.participants)
-        ? conversation.participants
-        : [];
-      return participants.includes(userId);
-    });
-
-    const enriched = await Promise.all(
-      myConversations.map(async (conversation) => {
-        const lastMessage = await Message.findOne({
-          where: { conversationId: conversation.id },
-          order: [["createdAt", "DESC"]],
-          attributes: ["id", "message", "senderId", "createdAt"]
-        });
-
-        return {
-          ...conversation.toJSON(),
-          lastMessage
-        };
-      })
-    );
-
-    return res.json(enriched);
+    return res.json(conversations);
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Failed to fetch conversations" });

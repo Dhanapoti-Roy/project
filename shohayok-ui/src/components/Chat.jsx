@@ -64,10 +64,15 @@ function Chat({ userId }) {
       if (incoming.conversationId !== activeConversationId) return;
       setMessages((prev) => [...prev, incoming]);
     };
+    const handleChatError = (payload) => {
+      setError(payload?.message || "Chat operation failed");
+    };
 
     socket.on("receiveMessage", handleIncoming);
+    socket.on("chatError", handleChatError);
     return () => {
       socket.off("receiveMessage", handleIncoming);
+      socket.off("chatError", handleChatError);
     };
   }, [activeConversationId, userId]);
 
@@ -94,6 +99,7 @@ function Chat({ userId }) {
         <label htmlFor="conversation-select">Conversation: </label>
         <select
           id="conversation-select"
+          aria-label="Select chat conversation"
           value={activeConversationId}
           onChange={(e) => setActiveConversationId(e.target.value)}
         >
@@ -101,36 +107,42 @@ function Chat({ userId }) {
           {conversations.map((conversation) => (
             <option key={conversation.id} value={conversation.id}>
               {conversation.type}
-              {conversation.missionId ? ` • ${conversation.missionId.slice(0, 8)}` : ""}
+              {conversation.missionId
+                ? ` • ${String(conversation.missionId).slice(0, 8)}`
+                : ""}
             </option>
           ))}
         </select>
       </div>
 
-      <div
+      <ul
+        role="log"
+        aria-live="polite"
         style={{
           height: "320px",
           overflowY: "auto",
           border: "1px solid #ccc",
           marginBottom: "10px",
-          padding: "8px"
+          padding: "8px",
+          listStyle: "none"
         }}
       >
         {messages.map((msg) => (
-          <div key={msg.id} style={{ marginBottom: "8px" }}>
+          <li key={msg.id} style={{ marginBottom: "8px" }}>
             <b>
               {msg.senderId === userId
                 ? "You"
-                : msg.sender?.name || msg.senderId?.slice(0, 8) || "User"}
+                : msg.sender?.name || (msg.senderId ? String(msg.senderId).slice(0, 8) : "User")}
             </b>
             : {msg.message}
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {activeConversation ? (
         <>
           <input
+            aria-label="Chat message input"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Type message..."
@@ -138,7 +150,7 @@ function Chat({ userId }) {
               if (e.key === "Enter") sendMessage();
             }}
           />
-          <button onClick={sendMessage}>Send</button>
+          <button aria-label="Send message" onClick={sendMessage}>Send</button>
         </>
       ) : (
         <p>No chat available for your account yet.</p>

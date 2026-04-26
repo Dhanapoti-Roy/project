@@ -6,6 +6,7 @@ const userLocations = {};
 const chatSocket = (io) => {
   io.on("connection", (socket) => {
     console.log("🟢 Connected:", socket.id);
+    const emitError = (message) => socket.emit("chatError", { message });
 
     // 🔹 JOIN ROOM
     socket.on("joinConversation", async (payload) => {
@@ -18,12 +19,18 @@ const chatSocket = (io) => {
 
         if (userId) {
           const conversation = await Conversation.findByPk(conversationId);
-          if (!conversation) return;
+          if (!conversation) {
+            emitError("Conversation not found");
+            return;
+          }
 
           const participants = Array.isArray(conversation.participants)
             ? conversation.participants
             : [];
-          if (!participants.includes(userId)) return;
+          if (!participants.includes(userId)) {
+            emitError("You are not a participant of this conversation");
+            return;
+          }
         }
 
         socket.join(conversationId);
@@ -35,15 +42,24 @@ const chatSocket = (io) => {
     // 🔹 SEND MESSAGE
     socket.on("sendMessage", async ({ conversationId, senderId, message }) => {
       try {
-        if (!conversationId || !senderId || !String(message || "").trim()) return;
+        if (!conversationId || !senderId || !String(message || "").trim()) {
+          emitError("Invalid message payload");
+          return;
+        }
 
         const conversation = await Conversation.findByPk(conversationId);
-        if (!conversation) return;
+        if (!conversation) {
+          emitError("Conversation not found");
+          return;
+        }
 
         const participants = Array.isArray(conversation.participants)
           ? conversation.participants
           : [];
-        if (!participants.includes(senderId)) return;
+        if (!participants.includes(senderId)) {
+          emitError("You are not allowed to send messages in this conversation");
+          return;
+        }
 
         const saved = await Message.create({
           message: String(message).trim(),
