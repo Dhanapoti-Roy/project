@@ -8,12 +8,7 @@ function ChatPage() {
     return <Navigate to="/login" />;
   }
 
-  const userId = user.id;
-
-  // 🔥 later API থেকে আনবা (এখন demo)
-  const conversationId = "demo-convo-1";
-
-  return <Chat userId={userId} conversationId={conversationId} />;
+  return <Chat userId={user.id} />;
 }
 
 export default ChatPage;

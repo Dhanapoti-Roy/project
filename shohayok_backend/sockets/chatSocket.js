@@ -1,4 +1,4 @@
-const { Message } = require("../models");
+const { Message, Conversation } = require("../models");
 
 const activeMissions = {};
 const userLocations = {};
@@ -8,18 +8,53 @@ const chatSocket = (io) => {
     console.log("🟢 Connected:", socket.id);
 
     // 🔹 JOIN ROOM
-    socket.on("joinConversation", (conversationId) => {
-      socket.join(conversationId);
+    socket.on("joinConversation", async (payload) => {
+      try {
+        const conversationId =
+          typeof payload === "string" ? payload : payload?.conversationId;
+        const userId = typeof payload === "object" ? payload?.userId : null;
+
+        if (!conversationId) return;
+
+        if (userId) {
+          const conversation = await Conversation.findByPk(conversationId);
+          if (!conversation) return;
+
+          const participants = Array.isArray(conversation.participants)
+            ? conversation.participants
+            : [];
+          if (!participants.includes(userId)) return;
+        }
+
+        socket.join(conversationId);
+      } catch (err) {
+        console.error("❌ JOIN ERROR:", err);
+      }
     });
 
     // 🔹 SEND MESSAGE
     socket.on("sendMessage", async ({ conversationId, senderId, message }) => {
       try {
+        if (!conversationId || !senderId || !String(message || "").trim()) return;
+
+        const conversation = await Conversation.findByPk(conversationId);
+        if (!conversation) return;
+
+        const participants = Array.isArray(conversation.participants)
+          ? conversation.participants
+          : [];
+        if (!participants.includes(senderId)) return;
+
         const saved = await Message.create({
-          message,
+          message: String(message).trim(),
           senderId,
-          ConversationId: conversationId
+          conversationId
         });
+
+        await Conversation.update(
+          { updatedAt: new Date() },
+          { where: { id: conversationId } }
+        );
 
         io.to(conversationId).emit("receiveMessage", saved);
 
